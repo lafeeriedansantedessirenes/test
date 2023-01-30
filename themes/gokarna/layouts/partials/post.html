@@ -1,0 +1,52 @@
+<div class="post container">
+    <div class="post-header-section">
+        <h1>{{ upper .Title }}</h1>
+        <h3>{{ .Params.soustitre | truncate 15 }}</h3>
+        <small role="doc-subtitle">{{ .Description }}</small>
+        <p class="post-date">
+            {{ dateFormat "January 2, 2006" .Date }}
+        </p>
+
+        <ul class="post-tags">
+        {{ range .Params.tags }}
+            <li class="post-tag"><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+        {{ end }}
+        </ul>
+
+        <ul class="post-categories">
+            {{ range .Params.categories }}
+            <li class="post-categorie"><a href="{{ "categories/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+
+        <ul class="post-moods">
+            {{ range .Params.moods }}
+            <li class="post-mood"><a href="{{ "moods/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+
+        <ul class="post-acteurs">
+            {{ range .Params.acteurs }}
+            <li class="post-acteur"><a href="{{ "acteurs/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+
+        <ul class="post-auteurs">
+            {{ range .Params.auteurs }}
+            <li class="post-auteur"><a href="{{ "auteurs/" | absLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+
+
+    </div>
+
+    <div class="post-content">
+        <p>
+            Nombre de mots dans cet article : {{ .Content | countwords }} mots.
+            {{ .Content }}
+        </p>
+    </div>
+</div>
+
+
+
